@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Prediction Result</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <h5 class="card-title">Model: {{ model_name }}</h5>
+                <p class="card-text">Predicted Price: {{ prediction }}</p>
+                <a href="/" class="btn btn-primary">Make Another Prediction</a>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/results" class="btn btn-secondary">View Model Evaluation Results</a>
+        </div>
+    </div>
+</body>
+</html>

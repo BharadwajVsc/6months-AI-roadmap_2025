@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Regression Model Prediction</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mt-5">Regression Model Prediction</h1>
+        <form action="/predict" method="POST" class="mt-4">
+            <div class="form-group">
+                <label for="Avg. Area Income">Average Area Income:</label>
+                <input type="number" step="any" class="form-control" id="Avg. Area Income" name="Avg. Area Income" required>
+            </div>
+            <div class="form-group">
+                <label for="Avg. Area House Age">Average Area House Age:</label>
+                <input type="number" step="any" class="form-control" id="Avg. Area House Age" name="Avg. Area House Age" required>
+            </div>
+            <div class="form-group">
+                <label for="Avg. Area Number of Rooms">Average Area Number of Rooms:</label>
+                <input type="number" step="any" class="form-control" id="Avg. Area Number of Rooms" name="Avg. Area Number of Rooms" required>
+            </div>
+            <div class="form-group">
+                <label for="Avg. Area Number of Bedrooms">Average Area Number of Bedrooms:</label>
+                <input type="number" step="any" class="form-control" id="Avg. Area Number of Bedrooms" name="Avg. Area Number of Bedrooms" required>
+            </div>
+            <div class="form-group">
+                <label for="Area Population">Area Population:</label>
+                <input type="number" step="any" class="form-control" id="Area Population" name="Area Population" required>
+            </div>
+            <div class="form-group">
+                <label for="model">Select Model:</label>
+                <select class="form-control" id="model" name="model">
+                    {% for model_name in model_names %}
+                        <option value="{{ model_name }}">{{ model_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+        <div class="text-center mt-4">
+            <a href="/results" class="btn btn-secondary">View Model Evaluation Results</a>
+        </div>
+    </div>
+</body>
+</html>
