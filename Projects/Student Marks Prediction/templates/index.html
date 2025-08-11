@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Student Mark Predictor</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #e0f7fa 0%, #e1bee7 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      /* Subtle animated circles */
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.15;
+        animation: float 15s infinite ease-in-out;
+      }
+
+      .circle1 {
+        width: 200px;
+        height: 200px;
+        background: #6c63ff;
+        top: -50px;
+        left: -50px;
+      }
+      .circle2 {
+        width: 300px;
+        height: 300px;
+        background: #f48fb1;
+        bottom: -100px;
+        right: -80px;
+        animation-delay: 5s;
+      }
+      .circle3 {
+        width: 150px;
+        height: 150px;
+        background: #80deea;
+        bottom: 50px;
+        left: 100px;
+        animation-delay: 2s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0);
+        }
+        50% {
+          transform: translateY(-20px) rotate(45deg);
+        }
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      .card {
+        background: white;
+        padding: 25px 35px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        max-width: 400px;
+        width: 90%;
+        text-align: center;
+        animation: fadeIn 0.8s ease-in-out;
+        position: relative;
+        z-index: 2;
+      }
+
+      input[type="number"] {
+        width: 80%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        transition: 0.3s;
+        margin-top: 10px;
+      }
+
+      input[type="number"]:focus {
+        border-color: #6c63ff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(108, 99, 255, 0.6);
+      }
+
+      .btn {
+        margin-top: 15px;
+        background: #6c63ff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .btn:hover {
+        background: #5a54e0;
+      }
+
+      h2 {
+        margin-top: 20px;
+        color: #2c3e50;
+        font-weight: 500;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background shapes -->
+    <div class="circle circle1"></div>
+    <div class="circle circle2"></div>
+    <div class="circle circle3"></div>
+
+    <div class="card">
+      <h1>Enter Study Hours to Predict Marks</h1>
+      <form action="{{ url_for('predict') }}" method="post">
+        <input
+          type="number"
+          name="study_hours"
+          placeholder="Study hours"
+          step="0.01"
+          required
+        />
+        <br />
+        <button type="submit" class="btn">
+          <strong>Predict Marks</strong>
+        </button>
+      </form>
+      <h2>{{ prediction_text }}</h2>
+    </div>
+  </body>
+</html>
